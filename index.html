@@ -9,10 +9,12 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      background-color: rgb(38, 38, 38);
     }
     #countdown {
       font-size: 2rem;
       text-align: center;
+      color: white;
 
       margin-top: 0;
     }
@@ -21,18 +23,24 @@
       padding: 1rem;
       width: 200px;
       margin: 0.5rem;
-      border: 1px grey solid;
+      border: 1px rgb(255, 255, 255)  solid;
     }
     .imagine {
       /* Center the image */
 
       width: 400px;
+      margin-top: 30px;
     } /* Adjust as needed */
+    .paragraf {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      font-size: 24px;
+    }
   </style>
   <body>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <p class="paragraf">At&#807;i primit o invitatie!</p>
 
-    <img class="imagine" src="invitation.jpg" alt="" />
+    
     <table id="countdown">
       <tr id="countdown-timer">
         <td><span id="days">x</span></td>
@@ -47,6 +55,7 @@
         <td><span>Seconds</span></td>
       </tr>
     </table>
+    <img class="imagine" src="invitation.jpg" alt="" />
     <script>
       const storeOpening = new Date("march 09, 2024 00:00:00");
 
