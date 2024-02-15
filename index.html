@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wedding</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #countdown {
+      font-size: 2rem;
+      text-align: center;
+
+      margin-top: 0;
+    }
+    #countdown-timer span {
+      display: inline-block; /* Necessary to set a width */
+      padding: 1rem;
+      width: 200px;
+      margin: 0.5rem;
+      border: 1px grey solid;
+    }
+    .imagine {
+      /* Center the image */
+
+      width: 400px;
+    } /* Adjust as needed */
+  </style>
+  <body>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <img class="imagine" src="images/invitation.jpg" alt="" />
+    <table id="countdown">
+      <tr id="countdown-timer">
+        <td><span id="days">x</span></td>
+        <td><span id="hours">x</span></td>
+        <td><span id="minutes">x</span></td>
+        <td><span id="seconds">x</span></td>
+      </tr>
+      <tr id="countdown-labels">
+        <td><span>Days</span></td>
+        <td><span>Hours</span></td>
+        <td><span>Minutes</span></td>
+        <td><span>Seconds</span></td>
+      </tr>
+    </table>
+    <script>
+      const storeOpening = new Date("march 09, 2024 00:00:00");
+
+      setCountdown(storeOpening); // Calls setCoundown once
+      setInterval(function () {
+        setCountdown(storeOpening);
+      }, 1000);
+
+      function setCountdown(countingDownTime) {
+        let now = new Date();
+
+        let timeRemaining = countingDownTime - now;
+
+        console.log(timeRemaining);
+        // timeRemaining is time left in milliseconds!
+
+        let seconds = Math.floor(timeRemaining / 1000);
+        // Minutes
+        let minutes = Math.floor(timeRemaining / (1000 * 60));
+        // Hours
+        let hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+        // Days
+        let days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+        console.log(days, hours, minutes, seconds);
+        let daysToDisplay = days;
+
+        // Subtract 24 hours for every day remaining from the hour count
+        let hoursToDisplay = hours - days * 24;
+        // Subtract 60 minutes for every hour remaining from the minute count
+        let minutesToDisplay = minutes - hours * 60;
+        // Subtract 60 seconds for every minute remaining from the seconds count
+        let secondsToDisplay = seconds - minutes * 60;
+
+        console.log(
+          daysToDisplay,
+          hoursToDisplay,
+          minutesToDisplay,
+          secondsToDisplay
+        );
+        // Countdown now in displayable format!
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        daysEl.textContent = daysToDisplay;
+        hoursEl.textContent = hoursToDisplay;
+        minutesEl.textContent = minutesToDisplay;
+        secondsEl.textContent = secondsToDisplay;
+      }
+    </script>
+  </body>
+</html>
